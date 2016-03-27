@@ -1,0 +1,40 @@
+<div class="container">
+
+	<img id="octobot-img" ng-src="https://www.octobot.io/img/octobot.png">
+
+	<div ng-show="!logged" class="row center">
+		<form class="form-inline" nonvalidate>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" ng-model="username" id="username" placeholder="Username">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" class="form-control" ng-model="password" id="password" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-primary" ng-click="login()">Login</button>
+		</form>	
+	</div>
+	<div ng-show="logged" class="row center">
+		<h4>Great!!! Your JWT is: </h4>
+		<a href="http://jwt.io?token={{jwt}}"><p id="token" class="lead">{{ jwt }}</p></a>
+	</div>
+	<hr>
+
+	<div class="row">
+		<div class="well col-md-6 inner">
+			<button class="btn btn-primary" style="margin-bottom: 10px;" ng-click="publicRequest()">Public API call</button>
+			<textarea class="form-control" rows="10">{{ publicResponse | json }}</textarea>
+		</div>
+
+		<div class="well col-md-6 inner">
+			<button class="btn btn-primary" style="margin-bottom: 10px;" ng-click="protectedRequest()">Protected API call</button>
+			<textarea class="form-control" rows="10">{{ protectedResponse | json }}</textarea>
+		</div>
+	</div>
+
+</div>
+
+
+
+	
