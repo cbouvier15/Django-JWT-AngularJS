@@ -11,3 +11,4 @@ A django app.
 Developed as a part of a Tech Talk in https://octobot.io (a software boutique specialized in design, develop and grow your Web and Mobile product using Django, Angular.js and iOS technologies.)
 
 Now, I'm going to add a lot of comments without value, with the only propouse of test and integration between GitHub and Jenkins.
+Another comment.
