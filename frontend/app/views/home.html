@@ -1,15 +1,15 @@
 <div class="container">
 
-	<img id="octobot-img" ng-src="https://www.octobot.io/images/mainlogo.png">
+	<img id="octobot-img" ng-src="images/octobot.png">
 
 	<div ng-show="!logged" class="row center">
 		<form class="form-inline" nonvalidate>
 			<div class="form-group">
-				<label for="username">Username</label>
+				<label style="display: block;text-align: left;" for="username">Username</label>
 				<input type="text" class="form-control" ng-model="username" id="username" placeholder="Username">
 			</div>
 			<div class="form-group">
-				<label for="password">Password</label>
+				<label style="display: block;text-align: left;" for="password">Password</label>
 				<input type="password" class="form-control" ng-model="password" id="password" placeholder="Password">
 			</div>
 			<button type="submit" class="btn btn-primary" ng-click="login()">Login</button>
@@ -24,13 +24,17 @@
 	<div class="row">
 		<div class="well col-md-6 inner">
 			<button class="btn btn-primary" style="margin-bottom: 10px;" ng-click="publicRequest()">Public API call</button>
-			<textarea class="form-control" rows="10">{{ publicResponse | json }}</textarea>
+			<textarea style="height: 350px;" class="form-control" rows="10">{{ publicResponse | json }}</textarea>
 		</div>
 
 		<div class="well col-md-6 inner">
 			<button class="btn btn-primary" style="margin-bottom: 10px;" ng-click="protectedRequest()">Protected API call</button>
-			<textarea class="form-control" rows="10">{{ protectedResponse | json }}</textarea>
+			<textarea style="height: 350px;" class="form-control" rows="10">{{ protectedResponse | json }}</textarea>
 		</div>
+	</div>
+
+	<div class="row" ng-if="logged">
+		<button type="submit" class="btn btn-primary" ng-click="logout()">Logout</button>
 	</div>
 
 </div>

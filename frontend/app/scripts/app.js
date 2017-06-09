@@ -22,12 +22,20 @@ angular
 		$httpProvider.defaults.xsrfCookieName = 'csrftoken';
 		$httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-		jwtInterceptorProvider.tokenGetter = function(store) {
-			return store.get('token');
-		};
+		// ################################################################################
+	    // JWT Auth settings
+	    // ################################################################################
+	    jwtInterceptorProvider.tokenGetter = function(config ,store, jwtHelper) {
 
-		// Add a simple interceptor that will fetch all requests and add the jwt token to its authorization header.
-		$httpProvider.interceptors.push('jwtInterceptor');
+	      // Skip authentication for any requests ending in .html
+	      if (config.url.substr(config.url.length - 5) === '.html') {
+	        return null;
+	      }
+	      var token = store.get('token');
+	      return ((token && (!jwtHelper.isTokenExpired(token))) ? token : null);
+	    };
+
+	    $httpProvider.interceptors.push('jwtInterceptor');
 
 		//
 		// For any unmatched url, redirect to /state1
@@ -39,5 +47,5 @@ angular
 			templateUrl: 'views/home.html',
 			controller: 'HomeCtrl',
 			controllerAs: 'home'
-		})  
+		})
 });

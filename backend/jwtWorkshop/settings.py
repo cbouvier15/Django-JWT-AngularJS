@@ -26,7 +26,7 @@ SECRET_KEY = ')7ge667pbhze4v_a-w@3-&z@iq9^z*&m8i5=&5=l)ek%uhl_v+'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -112,5 +112,6 @@ STATIC_URL = '/static/'
 
 JWT_AUTH = {
     'JWT_SECRET_KEY': SECRET_KEY,
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    # 'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_AUTH_COOKIE': 'token',
 }
